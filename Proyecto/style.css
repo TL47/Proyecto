@@ -1,0 +1,286 @@
+:root {
+    --dark-grey: #393C41;
+    --army-green: #294023;
+    --blood-red: #832D38;
+    --cream-bg: #F8DFBF;
+    --tan-accent: #CAA674;
+    --paper-white: #ffeccf;
+}
+
+body {
+    font-family: 'Noto Serif', serif;
+    background-color: #d4c4b0;
+    color: var(--dark-grey);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    background-color: var(--army-green);
+    border-bottom: 4px solid var(--blood-red);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.navbar-brand, .nav-link {
+    /* El !important sirve para forzar que una regla específica se aplique por encima de cualquier otra, ignorando las reglas habituales de especificidad. */
+    color: var(--paper-white) !important;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--tan-accent) !important;
+    transform: translateY(-2px);
+}
+
+.nav-link.active {
+    color: var(--tan-accent) !important;
+    background-color: rgba(202, 166, 116, 0.2);
+    border-radius: 5px;
+}
+
+.portada {
+    /* Este fondo utiliza dos capas de degradado:
+    1. La primera capa es un "velo" negro con 70% de opacidad para oscurecer el fondo.
+    2. La segunda capa es el degradado de color (verde militar a rojo sangre) a 135 grados.
+    El resultado es un fondo oscuro que facilita la lectura de texto claro encima.
+    */
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                linear-gradient(135deg, var(--army-green), var(--blood-red));
+    /* Asegura que el degradado cubra todo el contenedor */
+    background-size: cover;
+    color: white;
+    border-left: 10px solid var(--blood-red);
+    position: relative;
+    overflow: hidden;
+    height: 60vh;
+}
+
+.portada::before {
+    /* Crea una capa "hija" virtual que no existe en el HTML. */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="100" fill="rgba(255,255,255,0.03)">⚔</text></svg>') center/cover;
+    animation: float 20s infinite ease-in-out;
+}
+
+.filtro {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(131, 45, 56, 0.1) 50%, transparent 70%);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+.btn-legion {
+    background-color: var(--army-green);
+    color: white;
+    border: 2px solid var(--dark-grey);
+    padding: 12px 30px;
+    font-weight: bold;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-legion::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-legion:hover::before {
+    left: 100%;
+}
+
+.btn-legion:hover {
+    background-color: var(--blood-red);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(131, 45, 56, 0.4);
+    border-color: var(--blood-red);
+}
+
+.carta-pj, .carta-titan {
+    background-color: var(--paper-white);
+    border: 2px solid var(--tan-accent);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    min-height: 400px;
+}
+
+.carta-pj::before, .carta-titan::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 30%, rgba(41, 64, 35, 0.05) 50%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.carta-pj:hover::before, .carta-titan:hover::before {
+    opacity: 1;
+}
+
+.carta-pj:hover {
+    border-color: var(--blood-red);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(131, 45, 56, 0.2);
+}
+
+.carta-titan:hover {
+    border-color: var(--blood-red);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(131, 45, 56, 0.3);
+}
+
+.carta-titan .card-img-top {
+    width: 350px !important;
+    height: 500px !important;
+    object-fit: cover;
+    object-position: center;
+    margin: 0 auto;
+    display: block;
+}
+
+.caja-img {
+    position: relative;
+    overflow: hidden;
+}
+
+.chapa {
+    position: absolute;
+    color: white;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.position-relative {
+    position: relative;
+}
+
+.d-inline-block {
+    display: inline-block;
+}
+
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 0.875rem;
+}
+
+.position-relative:hover .btn-sm {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+.txt-sangre {
+    color: var(--blood-red);
+    font-weight: bold;
+}
+
+.linea-sangre {
+    border-top: 3px solid var(--blood-red);
+    opacity: 1;
+    background: linear-gradient(90deg, var(--blood-red), transparent);
+    height: 3px;
+    border: none;
+}
+
+footer {
+    background-color: var(--dark-grey);
+    color: var(--tan-accent);
+    border-top: 3px solid var(--blood-red);
+    margin-top: auto;
+    width: 100%;
+}
+
+.fondo-verde {
+    background-color: var(--army-green) !important;
+}
+
+.card-header {
+    border-bottom: 2px solid var(--blood-red);
+}
+
+.card {
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+.badge {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+}
+
+/* Animaciones de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efectos de scroll suave */
+html {
+    scroll-behavior: smooth;
+}
+
+.seccion {
+    flex: 1;
+    padding-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    .portada {
+        border-left: 5px solid var(--blood-red);
+    }
+    
+    .btn-legion {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}

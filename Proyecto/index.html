@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archivo de la Legión de Reconocimiento</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <i class="fas fa-shield-alt me-2"></i>
+                LEGION DE RECONOCIMIENTO
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link active" href="#" onclick="showSection('inicio')"><i class="fas fa-home me-1"></i>Inicio</a>
+                    <a class="nav-link" href="#" onclick="showSection('titanes')"><i class="fas fa-skull me-1"></i>Titanes</a>
+                    <a class="nav-link" href="#" onclick="showSection('facciones')"><i class="fas fa-shield-alt me-1"></i>Facciones</a>
+                    <a class="nav-link" href="#" onclick="showSection('murallas')"><i class="fas fa-chess-rook me-1"></i>Murallas</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="inicio" class="seccion container mt-5">
+        <div class="portada p-5 mb-4 rounded-3 position-relative overflow-hidden" style="background-image: url('imagenes/imagen_portada3.jpg'); background-size: cover; background-position: center;">
+            <div class="filtro"></div>
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-header bg-dark text-white">
+                        <h3 class="mb-0"><i class="fas fa-book-open me-2"></i>Historia de la Serie</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="lead">Hace un siglo, la humanidad fue llevada al borde de la extinción por la aparición repentina de los Titanes, gigantes humanoides que devoran a los seres humanos sin motivo aparente.</p>
+                        <p>Los supervivientes se refugiaron detrás de tres enormes murallas concéntricas: <strong>Maria</strong>, <strong>Rose</strong> y <strong>Sina</strong>. Durante cien años, hubo una paz relativa hasta que un titán colosal apareció de la nada y abrió una brecha en la Muralla Maria, permitiendo que los titanes invadieran el territorio humano.</p>
+                        <p>Eren Yeager, un joven que presenció la muerte de su madre a manos de un titán, jura vengarse y exterminar a todos los titanes. Junto a sus amigos de la infancia Mikasa Ackerman y Armin Arlert, se une a la Legión de Reconocimiento para luchar por la humanidad.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header fondo-verde text-white">
+                        <h5 class="mb-0">Datos Clave</h5>
+                    </div>
+                    <div class="card-body">
+                            <p><strong>Creador:</strong> Hajime Isayama</p>
+                            <p><strong>Años de publicación:</strong> 2009-2021</p>
+                            <p><strong>Capítulos:</strong> 139</p>
+                            <p><strong>Temporadas anime:</strong> 4</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="mb-4 text-center"><i class="fas fa-users me-2"></i>Personajes Principales</h2>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            <div class="col">
+                <div class="card carta-pj h-100 shadow-sm">
+                    <div class="caja-img">
+                        <img src="imagenes/eren.jpg" class="card-img-top" alt="Eren Yeager" style="height: 250px; object-fit: cover;">
+                        <div class="chapa bg-danger">Protagonista</div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title txt-sangre fw-bold">Eren Yeager</h5>
+                        <p class="card-text small">Protagonista principal y poseedor del Titán de Ataque. Su determinación por la libertad impulsa toda la trama.</p>
+                        <div class="mt-2">
+                            <span class="badge bg-dark me-1">Titán de Ataque</span>
+                            <span class="badge bg-secondary">Legión</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card carta-pj h-100 shadow-sm">
+                    <div class="caja-img">
+                        <img src="imagenes/mikasa.jpg" class="card-img-top" alt="Mikasa Ackerman" style="height: 250px; object-fit: cover;">
+                        <div class="chapa bg-success">Guerrera Élite</div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title txt-sangre fw-bold">Mikasa Ackerman</h5>
+                        <p class="card-text small">Una de las guerreras más fuertes de la humanidad. Su lealtad hacia Eren es inquebrantable.</p>
+                        <div class="mt-2">
+                            <span class="badge bg-dark me-1">Ackerman</span>
+                            <span class="badge bg-secondary">Legión</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card carta-pj h-100 shadow-sm">
+                    <div class="caja-img">
+                        
+                        <img src="imagenes/armin.jpg" class="card-img-top" alt="Armin Arlert" style="height: 250px; object-fit: cover;">
+                        <div class="chapa bg-info">Estratega</div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title txt-sangre fw-bold">Armin Arlert</h5>
+                        <p class="card-text small">El estratega brillante de la Legión. Su inteligencia ha salvado a la humanidad en numerosas ocasiones.</p>
+                        <div class="mt-2">
+                            <span class="badge bg-dark me-1">Titán Colosal</span>
+                            <span class="badge bg-secondary">Legión</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card carta-pj h-100 shadow-sm">
+                    <div class="caja-img">
+                        
+                        <img src="imagenes/levi.jpg" class="card-img-top" alt="Levi Ackerman" style="height: 250px; object-fit: cover;">
+                        <div class="chapa bg-warning">Líder</div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title txt-sangre fw-bold">Levi Ackerman</h5>
+                        <p class="card-text small">Considerado el soldado más fuerte de la humanidad. Líder del escuadrón especial.</p>
+                        <div class="mt-2">
+                            <span class="badge bg-dark me-1">Ackerman</span>
+                            <span class="badge bg-secondary">Capitán</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="titanes" class="seccion container mt-5 pt-5 pb-5" style="display: none;">
+        <hr class="linea-sangre">
+        <h2 class="text-center mb-4">Enciclopedia de Titanes</h2>
+        
+        <div class="button-container d-flex justify-content-center flex-wrap mb-5">
+            <button class="btn btn-legion m-2" onclick="loadXMLDoc('titanesPuros')">Titanes Puros</button>
+            <button class="btn btn-legion m-2" onclick="loadXMLDoc('losNueveTitanes')">Los Nueve Titanes</button>
+            <button class="btn btn-legion m-2" onclick="loadXMLDoc('titanesMurallas')">Titanes de las Murallas</button>
+        </div>
+
+        <div id="demo" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            </div>
+    </div>
+
+    <div id="facciones" class="seccion container mt-5 pt-5 pb-5" style="display: none;">
+        <hr class="linea-sangre">
+        <h2 class="text-center mb-4">Las Tres Facciones</h2>
+        
+        <div class="row mb-4">
+            <div class="col-md-4 mb-3">
+                <div class="card carta-pj h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="position-relative d-inline-block mb-3">
+                            <img src="imagenes/exploracion.png" class="img-fluid" alt="Escudo Exploración" style="max-height: 150px;">
+                        </div>
+                        <h5 class="txt-sangre">Legión de Reconocimiento</h5>
+                        <p class="small">Los exploradores valientes que se aventuran fuera de las murallas para recuperar territorio y descubrir la verdad sobre el mundo y los titanes.</p>
+                        <button class="btn btn-legion btn-sm mt-2" onclick="elegirFaccionDirecto('exploracion')">Elegir</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card carta-pj h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="position-relative d-inline-block mb-3">
+                            <img src="imagenes/guarnicion.png" class="img-fluid" alt="Escudo Guarnición" style="max-height: 150px;">
+                        </div>
+                        <h5 class="txt-sangre">Tropa de Guarnición</h5>
+                        <p class="small">Los soldados que protegen las murallas y mantienen el orden dentro de los distritos, asegurando la supervivencia de la humanidad.</p>
+                        <button class="btn btn-legion btn-sm mt-2" onclick="elegirFaccionDirecto('guarnicion')">Elegir</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card carta-pj h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="position-relative d-inline-block mb-3">
+                            <img src="imagenes/militar.png" class="img-fluid" alt="Escudo Policía Militar" style="max-height: 150px;">
+                        </div>
+                        <h5 class="txt-sangre">Policía Militar</h5>
+                        <p class="small">La élite que mantiene el control interno y protege al rey, investigando amenazas dentro de las murallas.</p>
+                        <button class="btn btn-legion btn-sm mt-2" onclick="elegirFaccionDirecto('militar')">Elegir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-container d-flex justify-content-center flex-wrap mb-5">
+            <button class="btn btn-legion m-2">Hacer Test de Facción</button>
+        </div>
+    </div>
+
+    <div id="murallas" class="seccion container mt-5 pt-5 pb-5" style="display: none;">
+        <hr class="linea-sangre">
+        <h2 class="text-center mb-4">Las Tres Murallas</h2>
+        
+        <div class="text-center mb-4">
+            <p class="txt-sangre">
+                <i class="fas fa-info-circle me-2"></i>Haz clic en las murallas para saber más
+            </p>
+        </div>
+        
+        <!-- Image Map Generated by http://www.image-map.net/ -->
+        <div class="text-center mb-4">
+            <img src="imagenes/tres_murallas.png" usemap="#image-map" class="img-fluid" alt="Mapa de las Tres Murallas" style="max-height: 400px;">
+        </div>
+
+        <map name="image-map">
+            <area target="_self" alt="maria" title="Muralla Maria" href="#" onclick="mostrarInfoMuralla('maria')" coords="88,254,98,290,112,311,146,336,180,359,224,385,262,394,313,407,388,416,448,429,479,422,525,424,639,424,713,410,808,377,865,337,897,299,917,342,903,366,870,390,826,427,753,450,702,464,665,476,647,503,632,530,600,541,548,550,515,539,484,522,472,500,429,483,357,475,281,459,191,430,156,407,107,370,74,329,63,268" shape="poly">
+            <area target="_self" alt="maria2" title="Muralla Maria 2" href="#" onclick="mostrarInfoMuralla('maria')" coords="893,303,906,262,877,230,858,201,828,181,805,167,779,158,738,146,689,129,649,123,615,113,576,107,546,105,551,78,603,75,633,82,677,91,734,104,779,120,820,135,859,152,888,171,955,182,979,209,971,239,937,265,928,309,913,344,903,366,870,390,826,427,753,450,702,464,665,476,647,503,632,530,600,541,548,550,515,539,484,522,472,500,429,483,357,475,281,459,191,430,156,407,107,370,74,329,63,268" shape="poly">
+            <area target="_self" alt="maria3" title="Muralla Maria 3" href="#" onclick="mostrarInfoMuralla('maria')" coords="93,259,116,222,178,174,263,138,331,120,389,107,439,100,459,95,458,59,432,65,410,70,395,75,370,85,339,85,305,94,269,103,207,117,185,129,159,145,132,155,109,170,92,188,79,198,36,197,3,220,0,257,0,281,51,287" shape="poly">
+            <area target="_self" alt="sina" title="Muralla Sina" href="#" onclick="mostrarInfoMuralla('sina')" coords="313,185,249,233,259,250,276,262,290,273,312,282,341,292,364,300,384,306,435,313,464,319,502,320,532,317,593,311,633,303,679,291,700,276,730,257,738,293,731,323,712,336,689,347,674,352,637,360,614,370,594,381,578,402,552,410,521,412,491,404,474,391,459,373,437,375,409,368,363,365,333,349,318,347,294,338,265,320,245,301,233,286,233,271,233,255,231,273,201,273,178,264,173,245,171,228,170,217,173,206,186,196,202,191,230,190,252,168,270,156,290,147,336,126" shape="poly">
+            <area target="_self" alt="sina2" title="Muralla Sina 2" href="#" onclick="mostrarInfoMuralla('sina')" coords="455,139,420,147,376,163,312,185,331,130,383,115,437,113,457,112" shape="poly">
+            <area target="_self" alt="sina3" title="Muralla Sina 3" href="#" onclick="mostrarInfoMuralla('sina')" coords="524,135,537,140,553,138,572,144,590,151,629,145,664,139,686,154,687,185,704,193,719,202,730,216,735,227,735,238,787,226,817,207,816,193,790,177,738,172,724,156,699,143,656,131,609,119,574,112,544,109" shape="poly">
+            <area target="_self" alt="rose" title="Muralla Rose" href="#" onclick="mostrarInfoMuralla('rose')" coords="322,254,376,267,408,280,445,291,466,300,494,319,529,318,552,313,563,289,607,276,627,262,668,244,678,213,671,196,627,178,606,166,575,154,554,143,522,137,499,136,462,134,437,141,414,152,396,163,383,169,359,180,338,187,322,192,319,209,316,220" shape="poly">
+        </map>
+    </div>
+
+    <div id="info-muralla" class="text-center" style="display: none;">
+        <div class="card carta-titan h-100 shadow-sm border-0 mb-4">
+            <div class="card-body">
+                <img id="escudo-muralla" src="" class="img-fluid mb-3" alt="Escudo Muralla" style="max-height: 200px;">
+                <h3 id="titulo-muralla" class="txt-sangre mb-3"></h3>
+                <p id="descripcion-muralla" class="mb-3"></p>
+                <h5 id="ubicacion-muralla" class="txt-sangre mb-3"></h5>
+                <button class="btn btn-legion mt-3" onclick="volverMurallas()">
+                    <i class="fas fa-arrow-left me-2"></i>Volver atrás
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para cambiar entre las distintas secciones de la página
+        function showSection(sectionId) {
+            // Selecciona todos los elementos con la clase 'seccion' y los oculta
+            const sections = document.querySelectorAll('.seccion');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Busca la sección específica por su ID y la hace visible
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.style.display = 'block';
+            }
+            
+            // Quita la clase 'active' de todos los enlaces de navegación para resetear el estilo
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Añade la clase 'active' al enlace que se acaba de pulsar
+            event.target.closest('.nav-link').classList.add('active');
+            
+            // Evita el comportamiento por defecto del enlace (que no recargue la página)
+            event.preventDefault();
+        }
+
+        // Función para realizar la petición AJAX y cargar el archivo XML
+        function loadXMLDoc(categoria) {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                // Si la respuesta es satisfactoria, llama a la función para renderizar las tarjetas
+                if (this.readyState == 4 && this.status == 200) {
+                    renderCards(this, categoria);
+                }
+            };
+            // Abre la conexión con el archivo local "titanes.xml"
+            xmlhttp.open("GET", "titanes.xml", true);
+            xmlhttp.send();
+        }
+
+        // Función para procesar los datos del XML y generar el contenido HTML
+        function renderCards(xml, categoria) {
+            var xmlDoc = xml.responseXML;
+            var htmlCards = "";
+            // Obtiene el nodo principal de la categoría seleccionada (ej: titanesPuros)
+            var contenedorPrincipal = xmlDoc.getElementsByTagName(categoria)[0];
+
+            // Caso especial para los Titanes de las Murallas (estructura de un solo nodo)
+            if (categoria == "titanesMurallas") {
+                var nombre = contenedorPrincipal.getElementsByTagName("nombre")[0].childNodes[0].nodeValue;
+                var info = contenedorPrincipal.getElementsByTagName("caracteristicas")[0].childNodes[0].nodeValue;
+                htmlCards += createCardTemplate(nombre, info);
+            } else {
+                // Para las demás categorías, itera por cada hijo (cada Titán individual)
+                var hijos = contenedorPrincipal.children;
+                for (var i = 0; i < hijos.length; i++) {
+                    var nodoActual = hijos[i];
+                    // Salto de seguridad para no procesar nodos vacíos
+                    if(nodoActual.tagName === "nombre" && hijos.length > 1) continue; 
+
+                    var nombreNode = nodoActual.getElementsByTagName("nombre")[0];
+                    // Busca 'caracteristicas' o en su defecto 'habilidadPrincipal'
+                    var infoNode = nodoActual.getElementsByTagName("caracteristicas")[0] ||
+                                   nodoActual.getElementsByTagName("habilidadPrincipal")[0];
+
+                    if (nombreNode && infoNode) {
+                        // Concatena el HTML generado para cada titán
+                        htmlCards += createCardTemplate(nombreNode.childNodes[0].nodeValue, infoNode.childNodes[0].nodeValue);
+                    }
+                }
+            }
+            // Inserta todo el HTML generado en el elemento con ID "demo"
+            document.getElementById("demo").innerHTML = htmlCards;
+        }
+
+        // Función que genera la estructura HTML (Template) de cada tarjeta
+        function createCardTemplate(titulo, contenido) {
+            // Definición de estilos y etiquetas según el tipo de titán
+            const cardTypes = {
+                'titanesPuros': { icon: 'fa-skull', color: '#4b5d67', badge: 'Titán Puro', gradient: 'linear-gradient(135deg, #4b5d67, #393C41)' },
+                'losNueveTitanes': { icon: 'fa-crown', color: '#832D38', badge: 'Titán Cambiante', gradient: 'linear-gradient(135deg, #832D38, #294023)' },
+                'titanesMurallas': { icon: 'fa-shield-alt', color: '#294023', badge: 'Titán Muralla', gradient: 'linear-gradient(135deg, #294023, #832D38)' }
+            };
+            
+            // Lógica para asignar el tipo de tarjeta buscando palabras clave en el título
+            let cardType = cardTypes['titanesPuros'];
+            if (titulo.includes('Fundador') || titulo.includes('Ataque') || titulo.includes('Colosal') || 
+                titulo.includes('Acorazado') || titulo.includes('Hembra') || titulo.includes('Bestia') || 
+                titulo.includes('Mandíbula') || titulo.includes('Carguero') || titulo.includes('Martillo')) {
+                cardType = cardTypes['losNueveTitanes'];
+            } else if (titulo.includes('Murallas')) {
+                cardType = cardTypes['titanesMurallas'];
+            }
+            
+            // Diccionario para asignar el nombre de la imagen basado en el título del titán
+            const titanImages = {
+                'Titanes comunes': 'titanesPuros.png',
+                'Titanes Excéntricos (Anormales)': 'titanesexcentricos.png',
+                'Titán Fundador': 'fundador.png',
+                'Titán de Ataque': 'titanataque.png',
+                'Titán Colosal': 'colosal.png',
+                'Titán Acorazado': 'acorazado.png',
+                'Titán Hembra': 'hembra.png',
+                'Titán Bestia': 'bestia.png',
+                'Titán Mandíbula': 'mandibul.png',
+                'Titán Carguero': 'carguero.png',
+                'Titán Martillo de Guerra': 'martillo.png',
+                'Titanes de las Murallas': 'titanmurallas.jpg'
+            };
+            
+            const imageName = titanImages[titulo] || 'titan_default.jpg';
+            
+            // Devuelve el string HTML con los datos dinámicos insertados
+            return `
+                <div class="col mb-4">
+                    <div class="card carta-titan h-100 shadow-sm border-0">
+                        <div class="caja-img">
+                            <img src="imagenes/${imageName}" class="card-img-top" alt="${titulo}">
+                            <div class="chapa" style="background-color: ${cardType.color};">${cardType.badge}</div>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title txt-sangre mb-3 fw-bold">${titulo}</h4>
+                            <p class="card-text">${contenido}</p>
+                            <div class="mt-3">
+                                <span class="badge bg-dark me-1"><i class="fas fa-exclamation-triangle me-1"></i>Peligroso</span>
+                                <span class="badge bg-secondary"><i class="fas fa-book me-1"></i>Archivo Clasificado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Función para mostrar la información detallada de una muralla específica
+        function mostrarInfoMuralla(muralla) {
+            // Objeto local con los datos de las tres murallas
+            const infoMurallas = {
+                'maria': {
+                    nombre: 'Muralla Maria',
+                    descripcion: 'La primera y más grande de las tres murallas. Fue la primera en caer ante el ataque de los titanes y la que sufrió mayores daños. Protege el Distrito Exterior donde se encuentran los campos de entrenamiento y tierras recuperadas.',
+                    escudo: 'imagenes/maria.png',
+                    ubicacion: 'Protege el Distrito Exterior'
+                },
+                'rose': {
+                    nombre: 'Muralla Rose',
+                    descripcion: 'La segunda muralla en tamaño. Sirve como segunda línea de defensa tras la caída de Maria. Protege el Distrito Central donde vive la élite y el gobierno.',
+                    escudo: 'imagenes/rose.png',
+                    ubicacion: 'Protege el Distrito Central'
+                },
+                'sina': {
+                    nombre: 'Muralla Sina',
+                    descripcion: 'La muralla más pequeña e interior. Protege el Distrito Interior donde reside la realeza y las familias nobles. Es la última línea de defensa.',
+                    escudo: 'imagenes/sina.png',
+                    ubicacion: 'Protege el Distrito Interior'
+                }
+            };
+
+            // Obtiene la información del objeto basándose en el parámetro recibido
+            const murallaInfo = infoMurallas[muralla] || infoMurallas['maria'];
+            
+            // Actualiza los elementos del DOM con la información seleccionada
+            document.getElementById('escudo-muralla').src = murallaInfo.escudo;
+            document.getElementById('titulo-muralla').textContent = murallaInfo.nombre;
+            document.getElementById('descripcion-muralla').textContent = murallaInfo.descripcion;
+            document.getElementById('ubicacion-muralla').textContent = murallaInfo.ubicacion;
+            
+            // Muestra el panel de detalles y oculta la selección general de murallas
+            document.getElementById('info-muralla').style.display = 'block';
+            document.getElementById('murallas').style.display = 'none';
+        }
+
+        // Función para volver a la vista general de las murallas
+        function volverMurallas() {
+            document.getElementById('info-muralla').style.display = 'none';
+            document.getElementById('murallas').style.display = 'block';
+        }
+    </script>
+
+    <footer class="text-center p-4 mt-5">
+        <p>© 2026 - Informe de la Legión de Reconocimiento | 1º DAM</p>
+    </footer>
+</body>
+</html>

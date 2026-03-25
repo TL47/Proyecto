@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<titanes>
+  <titanesPuros>
+    <titanesComunes>
+        <nombre>Titanes comunes</nombre>
+    <caracteristicas>No tienen inteligencia, varían en tamaño (de 3 a 15 metros)
+        y su único objetivo es devorar humanos</caracteristicas>
+    </titanesComunes>
+    
+    <titanesExcentricos>
+        <nombre>Titanes Excéntricos (Anormales)</nombre>
+        <caracteristicas>Son una subcategoría de los puros. Muestran un comportamiento errático, como
+        correr de forma extraña o ignorar a ciertos humanos para atacar a grupos más grandes. Tienen
+        un ligero grado de impredecibilidad.</caracteristicas>
+    </titanesExcentricos>
+    
+  </titanesPuros>
+
+  <losNueveTitanes>
+    <nombre>Los Nueve Titanes (Cambiantes)</nombre>
+
+    <titanFundador>
+        <nombre>Titán Fundador</nombre>
+        <habilidadPrincipal>Puede controlar a otros titanes y alterar las memorias de los eldianos.</habilidadPrincipal>
+    </titanFundador>
+
+    <titanAtaque>
+        <nombre>Titán de Ataque</nombre>
+        <habilidadPrincipal>Capaz de ver las memorias de sus futuros portadores; siempre lucha por la libertad.</habilidadPrincipal>
+    </titanAtaque>
+
+    <titanColosal>
+        <nombre>Titán Colosal</nombre>
+        <habilidadPrincipal>Tamaño inmenso (60m) y capacidad de generar explosiones y vapor ardiente.</habilidadPrincipal>
+    </titanColosal>
+
+    <titanAcorazado>
+        <nombre>Titán Acorazado</nombre>
+        <habilidadPrincipal>Piel endurecida como una armadura que lo protege de ataques físicos.</habilidadPrincipal>
+    </titanAcorazado>
+
+    <titanHembra>
+        <nombre>Titán Hembra</nombre>
+        <habilidadPrincipal>Gran versatilidad, endurecimiento local y capacidad de atraer titanes puros con su grito.</habilidadPrincipal>
+    </titanHembra>
+
+    <titanBestia>
+        <nombre>Titán Bestia</nombre>
+        <habilidadPrincipal>Apariencia animal (simio) y gran precisión para lanzar proyectiles a larga distancia.</habilidadPrincipal>
+    </titanBestia>
+
+    <titanMandíbula>
+        <nombre>Titán Mandíbula</nombre>
+        <habilidadPrincipal>El más rápido; posee garras y mandíbulas capaces de romper casi cualquier cosa.</habilidadPrincipal>
+    </titanMandíbula>
+
+    <titanCarguero>
+        <nombre>Titán Carguero</nombre>
+        <habilidadPrincipal>Gran resistencia física, lo que le permite estar transformado durante meses.</habilidadPrincipal>
+    </titanCarguero>
+
+    <titanMartillo>
+        <nombre>Titán Martillo de Guerra</nombre>
+        <habilidadPrincipal>Puede crear armas y estructuras complejas a partir de su propio endurecimiento.</habilidadPrincipal>
+    </titanMartillo>
+  </losNueveTitanes>
+
+  <titanesMurallas>
+    <nombre>Titanes de las Murallas</nombre>
+    <caracteristicas>Son similares en apariencia al Titán Colosal pero carecen de inteligencia.
+        Fueron creados por el Rey Fritz para formar el núcleo de las tres murallas
+        (Maria, Rose y Sina) y son los protagonistas del Retumbar.</caracteristicas>
+  </titanesMurallas>
+</titanes>
