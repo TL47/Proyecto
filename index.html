@@ -444,7 +444,9 @@
             `;
         }
 
+        // Función para elegir una facción directamente sin hacer el test
         function elegirFaccionDirecto(faccion) {
+            // Objeto con los datos de las tres facciones disponibles
             const facciones = {
                 'exploracion': {
                     nombre: 'Legión de Reconocimiento',
@@ -466,74 +468,319 @@
                 }
             };
 
+            // Obtiene la facción seleccionada o usa exploración como valor por defecto
             const faccionElegida = facciones[faccion] || facciones['exploracion'];
 
+            // Actualiza los elementos del DOM con los datos de la facción elegida
             document.getElementById('escudo-resultado').src = faccionElegida.escudo;
             document.getElementById('titulo-faccion').textContent = faccionElegida.nombre;
             document.getElementById('descripcion-faccion').textContent = faccionElegida.descripcion;
             document.getElementById('muralla-trabajo').textContent = faccionElegida.muralla;
 
+            // Muestra el resultado y oculta el contenedor del test
             document.getElementById('resultado-test').style.display = 'block';
             document.getElementById('test-container').style.display = 'none';
         }
 
+        // Variable global para almacenar la función de respuesta del test
+        let responderTestGlobal;
+
+        // Función para iniciar el test de facciones y determinar cuál es la más adecuada para el usuario
         function iniciarTestFacciones() {
+            // Obtiene los elementos del DOM que se van a manipular
             const testContainer = document.getElementById("test-container");
             const preguntaTest = document.getElementById("texto-pregunta");
             const barraProgreso = document.getElementById("barra-progreso");
+            const botonesRespuesta = document.querySelectorAll("#test-container .btn-legion");
 
+            // Muestra el contenedor del test
             testContainer.style.display = "block";
 
-            // Simulación de preguntas y respuestas
+            // Variables para controlar el progreso del test
             let preguntaActual = 0;
-            let respuestasCorrectas = 0;
+            let puntuacionExploracion = 0;
+            let puntuacionGuarnicion = 0;
+            let puntuacionMilitar = 0;
 
+            // Array con todas las preguntas del test y sus opciones
+            const preguntas = [
+                {
+                    pregunta: "¿Qué es lo más importante para ti en la vida?",
+                    opciones: [
+                        "La libertad y descubrir la verdad",
+                        "La seguridad y protección de los demás",
+                        "El orden y el control"
+                    ],
+                    puntos: [2, 1, 0] // Exploración, Guarnición, Militar
+                },
+                {
+                    pregunta: "¿Cómo reaccionarías ante un ataque de titanes?",
+                    opciones: [
+                        "Lucharía en la primera línea",
+                        "Protegería a los civiles y organizaría la defensa",
+                        "Investigaría si hay traición interna"
+                    ],
+                    puntos: [2, 1, 0]
+                },
+                {
+                    pregunta: "¿Qué tipo de sacrificio estarías dispuesto a hacer?",
+                    opciones: [
+                        "Arriesgar mi vida por la humanidad",
+                        "Poner en peligro mi seguridad por proteger a otros",
+                        "Renunciar a mi libertad por mantener el orden"
+                    ],
+                    puntos: [2, 1, 0]
+                },
+                {
+                    pregunta: "¿Qué cualidad valoras más en un compañero?",
+                    opciones: [
+                        "Valentía y determinación",
+                        "Lealtad y responsabilidad",
+                        "Disciplina y obediencia"
+                    ],
+                    puntos: [2, 1, 0]
+                },
+                {
+                    pregunta: "¿Cuál sería tu ideal de vida?",
+                    opciones: [
+                        "Explorar el mundo más allá de las murallas",
+                        "Vivir en paz dentro de las murallas protegidas",
+                        "Tener poder y estatus en el distrito interior"
+                    ],
+                    puntos: [2, 1, 0]
+                },
+                {
+                    pregunta: "¿Qué opinas sobre el gobierno actual?",
+                    opciones: [
+                        "Debe ser más transparente y honesto",
+                        "Debe proteger mejor a la gente",
+                        "Debe mantener el orden a toda costa"
+                    ],
+                    puntos: [2, 1, 0]
+                },
+                {
+                    pregunta: "¿Cómo enfrentas el miedo?",
+                    opciones: [
+                        "Lo uso como motivación para seguir adelante",
+                        "Lo supero pensando en proteger a otros",
+                        "Lo controlo through disciplina y entrenamiento"
+                    ],
+                    puntos: [2, 1, 0]
+                },
+                {
+                    pregunta: "¿Qué tipo de justicia prefieres?",
+                    opciones: [
+                        "La que busca la verdad sin importar el costo",
+                        "La que protege a los inocentes",
+                        "La que mantiene el orden establecido"
+                    ],
+                    puntos: [2, 1, 0]
+                },
+                {
+                    pregunta: "¿Qué harías si descubrieras un secreto peligroso?",
+                    opciones: [
+                        "Investigaría hasta encontrar la verdad completa",
+                        "Informaría a mis superiores inmediatamente",
+                        "Lo reportaría a las autoridades correspondientes"
+                    ],
+                    puntos: [2, 1, 0]
+                },
+                {
+                    pregunta: "¿Cómo tratas a las personas con opiniones diferentes?",
+                    opciones: [
+                        "Las escucho y busco entender su perspectiva",
+                        "Las respeto pero priorizo la seguridad del grupo",
+                        "Las vigilo por si representan una amenaza"
+                    ],
+                    puntos: [2, 1, 0]
+                },
+                {
+                    pregunta: "¿Qué significa para ti el deber?",
+                    opciones: [
+                        "Cumplir mi misión sin importar las consecuencias",
+                        "Proteger a quienes dependen de mí",
+                        "Seguir las órdenes y mantener la jerarquía"
+                    ],
+                    puntos: [2, 1, 0]
+                },
+                {
+                    pregunta: "¿Cómo prefieres trabajar en equipo?",
+                    opciones: [
+                        "Liderando desde el frente y tomando riesgos",
+                        "Coordinando y asegurando que todos estén seguros",
+                        "Siguiendo órdenes y manteniendo la disciplina"
+                    ],
+                    puntos: [2, 1, 0]
+                },
+                {
+                    pregunta: "¿Qué harías si un amigo desertara?",
+                    opciones: [
+                        "Trataría de entender sus razones y ayudarle",
+                        "Intentaría convencerle de que regrese",
+                        "Lo reportaría a las autoridades"
+                    ],
+                    puntos: [2, 1, 0]
+                },
+                {
+                    pregunta: "¿Qué tipo de información te interesa más?",
+                    opciones: [
+                        "La verdad sobre el mundo y los titanes",
+                        "Información sobre amenazas y defensas",
+                        "Información sobre posibles traiciones"
+                    ],
+                    puntos: [2, 1, 0]
+                },
+                {
+                    pregunta: "¿Cómo enfrentas la pérdida?",
+                    opciones: [
+                        "La uso como motivación para cambiar las cosas",
+                        "Acepto que es parte del deber proteger a otros",
+                        "Mantengo la compostura y sigo con mi responsabilidad"
+                    ],
+                    puntos: [2, 1, 0]
+                },
+                {
+                    pregunta: "¿Qué papel prefieres en un conflicto?",
+                    opciones: [
+                        "El que busca soluciones innovadoras",
+                        "El que protege y organiza la defensa",
+                        "El que mantiene el orden interno"
+                    ],
+                    puntos: [2, 1, 0]
+                },
+                {
+                    pregunta: "¿Cómo tratas a los superiores?",
+                    opciones: [
+                        "Los respeto pero cuestiono si es necesario",
+                        "Sigo sus órdenes pero priorizo la seguridad",
+                        "Los obedezco sin dudar"
+                    ],
+                    puntos: [2, 1, 0]
+                },
+                {
+                    pregunta: "¿Qué tipo de riesgo aceptas mejor?",
+                    opciones: [
+                        "El riesgo de explorar lo desconocido",
+                        "El riesgo de combatir directamente a titanes",
+                        "El riesgo de investigar amenazas internas"
+                    ],
+                    puntos: [2, 1, 0]
+                },
+                {
+                    pregunta: "¿Cómo defines el heroísmo?",
+                    opciones: [
+                        "Luchar por un futuro mejor para todos",
+                        "Sacrificarse por proteger a los demás",
+                        "Mantener la paz y el orden"
+                    ],
+                    puntos: [2, 1, 0]
+                },
+                {
+                    pregunta: "¿Qué legado quieres dejar?",
+                    opciones: [
+                        "Un mundo libre y verdadero",
+                        "Un lugar seguro para las futuras generaciones",
+                        "Un orden estable y justo"
+                    ],
+                    puntos: [2, 1, 0]
+                }
+            ];
+
+            // Función para mostrar la pregunta actual según el número de pregunta
             function mostrarPregunta() {
-                switch (preguntaActual) {
-                    case 0:
-                        preguntaTest.textContent = "¿Qué es lo más importante para ti?";
-                        break;
-                    case 1:
-                        preguntaTest.textContent = "¿Qué harías en una situación de peligro?";
-                        break;
-                    case 2:
-                        preguntaTest.textContent = "¿Qué valoras más en la vida?";
-                        break;
-                    default:
-                        console.error("Pregunta no reconocida");
+                if (preguntaActual < preguntas.length) {
+                    const preguntaActualObj = preguntas[preguntaActual];
+                    preguntaTest.textContent = `Pregunta ${preguntaActual + 1}/20: ${preguntaActualObj.pregunta}`;
+                    
+                    // Actualiza los botones con las opciones de respuesta
+                    botonesRespuesta.forEach((boton, index) => {
+                        if (index < preguntaActualObj.opciones.length) {
+                            boton.textContent = preguntaActualObj.opciones[index];
+                            boton.style.display = 'inline-block';
+                        } else {
+                            boton.style.display = 'none';
+                        }
+                    });
+                } else {
+                    console.error("No hay más preguntas disponibles");
                 }
             }
 
+            // Función para procesar la respuesta del usuario y avanzar en el test
             function responderTest(respuesta) {
-                // Simulación de respuestas correctas
-                if (respuesta === 0) {
-                    respuestasCorrectas++;
+                // Valida que la respuesta sea válida
+                if (respuesta < 0 || respuesta > 2) {
+                    console.error("Respuesta inválida");
+                    return;
                 }
 
-                preguntaActual++;
-                barraProgreso.style.width = `${(preguntaActual / 3) * 100}%`;
+                // Suma puntos según la respuesta
+                const puntos = preguntas[preguntaActual].puntos;
+                if (respuesta === 0) {
+                    puntuacionExploracion += puntos[0];
+                    puntuacionGuarnicion += puntos[1];
+                    puntuacionMilitar += puntos[2];
+                } else if (respuesta === 1) {
+                    puntuacionExploracion += puntos[1];
+                    puntuacionGuarnicion += puntos[2];
+                    puntuacionMilitar += puntos[0];
+                } else {
+                    puntuacionExploracion += puntos[2];
+                    puntuacionGuarnicion += puntos[0];
+                    puntuacionMilitar += puntos[1];
+                }
 
-                if (preguntaActual < 3) {
+                // Avanza a la siguiente pregunta
+                preguntaActual++;
+                // Actualiza la barra de progreso visualmente
+                barraProgreso.style.width = `${(preguntaActual / preguntas.length) * 100}%`;
+
+                // Comprueba si quedan preguntas por mostrar
+                if (preguntaActual < preguntas.length) {
                     mostrarPregunta();
                 } else {
-                    // Mostrar resultado del test
+                    // Muestra el resultado del test
                     const resultadoTest = document.getElementById("resultado-test");
                     resultadoTest.style.display = "block";
 
+                    // Determina la facción ganadora según las puntuaciones
                     let faccionGanadora;
-                    if (respuestasCorrectas >= 2) {
+                    const maxPuntuacion = Math.max(puntuacionExploracion, puntuacionGuarnicion, puntuacionMilitar);
+                    
+                    if (maxPuntuacion === puntuacionExploracion) {
                         faccionGanadora = "exploracion";
-                    } else if (respuestasCorrectas === 1) {
+                    } else if (maxPuntuacion === puntuacionGuarnicion) {
                         faccionGanadora = "guarnicion";
                     } else {
                         faccionGanadora = "militar";
                     }
 
+                    // En caso de empate, elige la facción con mayor puntuación en orden de preferencia
+                    if (puntuacionExploracion === puntuacionGuarnicion && puntuacionExploracion === puntuacionMilitar) {
+                        faccionGanadora = "exploracion"; // Empate total, por defecto exploración
+                    } else if (puntuacionExploracion === puntuacionGuarnicion && puntuacionExploracion > puntuacionMilitar) {
+                        faccionGanadora = "exploracion"; // Empate entre exploración y guarnición
+                    } else if (puntuacionGuarnicion === puntuacionMilitar && puntuacionGuarnicion > puntuacionExploracion) {
+                        faccionGanadora = "guarnicion"; // Empate entre guarnición y militar
+                    }
+
+                    // Llama a la función para mostrar el resultado con la facción determinada
                     elegirFaccionDirecto(faccionGanadora);
                 }
             }
 
+            // Asigna la función a la variable global para que sea accesible desde los botones
+            responderTestGlobal = responderTest;
+
+            // Inicia el test mostrando la primera pregunta
             mostrarPregunta();
+        }
+
+        // Función global para que los botones puedan llamarla
+        function responderTest(respuesta) {
+            if (responderTestGlobal) {
+                responderTestGlobal(respuesta);
+            }
         }
 
         // Función para mostrar la información detallada de una muralla específica
