@@ -133,7 +133,6 @@ body {
 }
 
 .carta-titan .card-body {
-    display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
@@ -448,3 +447,5 @@ html {
         padding: 2rem 1rem;
     }
 }
+
+
