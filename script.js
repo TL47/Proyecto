@@ -19,10 +19,117 @@ function showSection(sectionId) {
     });
 
     // Añade la clase 'active' al enlace que se acaba de pulsar
-    event.target.closest('.nav-link').classList.add('active');
+    if (event && event.target) {
+        event.target.closest('.nav-link').classList.add('active');
+        event.preventDefault();
+    }
 
-    // Evita el comportamiento por defecto del enlace (que no recargue la página)
-    event.preventDefault();
+    // Si se abre la sección de Historia, asegúrate de mostrar la vista principal
+    if (sectionId === 'historia') {
+        const historiaDetalle = document.getElementById('historia-detalle');
+        const historiaMain = document.getElementById('historia-main');
+        if (historiaDetalle) historiaDetalle.style.display = 'none';
+        if (historiaMain) historiaMain.style.display = 'block';
+    }
+}
+
+const historiaDetalles = {
+    temporada1: {
+        titulo: 'Temporada 1: La Caída de Shiganshina',
+        momentos: [
+            '1. La caída de Shiganshina y el Titán Colosal: El mismísimo inicio de la serie. Ver la cabeza del Titán Colosal asomarse por encima del Muro María (que llevaba 100 años intacto) destruyó la falsa sensación de seguridad de la humanidad. El trauma definitivo llega cuando Eren presencia cómo un titán devora a su madre, Carla Jaeger, marcando su obsesión por exterminarlos a todos.',
+            '2. La supuesta "muerte" de Eren: Durante la defensa del Distrito de Trost, las cosas salen terriblemente mal. En un acto de puro heroísmo, Eren rescata a Armin de las fauces de un titán, siendo devorado en su lugar. Para el espectador primerizo, ver al protagonista morir en el episodio 5 fue un shock absoluto.',
+            '3. La aparición del Titán Atacante: Justo cuando la desesperación era total, aparece un misterioso titán con orejas puntiagudas y melena que, en lugar de comer humanos, se dedica a masacrar a otros titanes con pura rabia técnica. Poco después descubrimos la gran revelación: Eren Jaeger tiene la capacidad de transformarse en titán.',
+            '4. El juicio de Eren y la "bienvenida" de Levi: La humanidad no sabe si usar a Eren como un arma o ejecutarlo por miedo. En el tribunal, para demostrar que puede mantener a Eren bajo control y salvarlo de la ejecución, el Capitán Levi le propina una paliza monumental que se convirtió en una de las escenas más memorables (y memes) de la temporada.',
+            '5. La emboscada de la Titán Hembra: Durante la 57ª Expedición del Cuerpo de Exploración fuera de los muros, entra en escena la Titán Hembra. A diferencia de los titanes puros, ella muestra una inteligencia militar y una crueldad asombrosas. La masacre del Escuadrón de Levi a sus manos es uno de los momentos más trágicos y desesperantes.',
+            '6. La identidad de la Titán Hembra y el combate en Stohess: Armin ata cabos y destapa la identidad de la traidora: Annie Leonhart. La temporada culmina con una brutal batalla campal entre el Titán de Eren y Annie dentro del Distrito de Stohess, que termina con ella cristalizándose para evitar ser interrogada y un plano final terrorífico: un titán viviendo dentro de las propias murallas.'
+        ],
+        curiosidades: [
+            'El diseño de los titanes: Hajime Isayama (el creador) se inspiró en una ocasión en la que trabajaba en un cibercafé y se topó con un cliente borracho. La incapacidad de comunicarse con él y la imprevisibilidad de sus movimientos le inspiraron el miedo que transmiten los titanes puros.',
+            'Artes marciales reales: El estilo de pelea del Titán de Eren está fuertemente inspirado en el luchador de MMA Yushin Okami. Por su parte, el estilo de combate de Annie (y su forma de titán) se basa en el Muay Thai y técnicas de jiu-jitsu.',
+            'El spoiler del opening: El icónico primer opening (Guren no Yumiya de Linked Horizon) esconde un montón de simbolismos. Si te fijas bien en los destellos y siluetas del inicio, ya te estaban mostrando sutilmente las identidades de los titanes infiltrados mucho antes de que se revelaran en la historia.',
+            'La ciudad real: El diseño arquitectónico de los muros y los distritos (como Shiganshina) está fuertemente inspirado en Nördlingen, una ciudad real ubicada en Baviera, Alemania, que destaca por tener una muralla medieval perfectamente conservada que la rodea por completo.',
+            'El misterio del diario de Ilse: En la primera temporada (y adaptado más a fondo en una OVA), el diario de un soldado caído revela que un titán habló y la confundió con alguien llamado "Ymir", postrándose ante ella. Fue la primera pista real de que los titanes tenían un origen humano y una cultura detrás.'
+        ]
+    },
+    temporada2: {
+        titulo: 'Temporada 2: El Reino de los Titanes',
+        momentos: [
+            '1. La aparición del Titán Bestia: El primer episodio arranca con una amenaza terrorífica: un titán con aspecto de simio, peludo, gigantesco y, lo peor de todo, capaz de hablar el idioma humano y controlar a otros titanes. Su fría interacción con el líder Miche, a quien le roba el equipo de maniobras tridimensionales antes de dejar que lo devoren, nos dejó claro que las reglas del juego habían cambiado.',
+            '2. El asedio al Castillo de Utgard y el secreto de Ymir: Atrapados de noche en las ruinas de un castillo y rodeados de titanes que se mueven sospechosamente en la oscuridad, los reclutas están a punto de morir. Para salvar a Historia (Christa), Ymir revela que también tiene la capacidad de transformarse en el Titán Mandíbula. Este momento cambia por completo la dinámica del grupo de amigos.',
+            '3. "Yo soy el Titán Acorazado y él es el Titán Colosal": Considerada unánimemente una de las mejores revelaciones en la historia del anime. Sin música épica, en un rincón de la pantalla, de fondo y de la manera más casual posible, Reiner le confiesa a Eren la verdad. La transición de esa conversación mundana a la brutal transformación en lo alto de la muralla, acompañada por el colapso mental de Eren al recordar su amistad, es pura historia del anime.',
+            '4. La persecución en el Bosque de los Árboles Gigantes: Tras el secuestro de Eren por parte de Reiner y Bertholdt, el Cuerpo de Exploración inicia una misión de rescate suicida. El enfrentamiento psicológico dentro del bosque, con Reiner sufriendo un trastorno de doble personalidad debido a la culpa de sus actos, añade una capa de complejidad brutal a los "villanos" de la serie.',
+            '5. Erwin Smith "¡Avanzad!": Durante el rescate de Eren, el Comandante Erwin demuestra por qué es un líder legendario. Un titán le atrapa y le arranca el brazo derecho, pero en lugar de gritar de dolor, ruge con todas sus fuerzas: "¡Avanzad! ¡Eren está justo delante!". Una demostración de determinación absoluta que salvó la misión.',
+            '6. El poder de la Coordenada (El Titán Fundador): Eren se encuentra cara a cara con el Titán Sonriente, el mismo que se comió a su madre. Tras presenciar la muerte de Hannes, Eren estalla en un grito de pura frustración y golpea la mano del titán. En ese instante, activa sin saberlo la Coordenada, obligando a todos los titanes puros de la zona a devorar al Titán Sonriente y a atacar a Reiner, permitiendo la huida de los humanos.'
+        ],
+        curiosidades: [
+            'Pistas en el Opening (Shinzou wo Sasageyo!): El famosísimo opening de Linked Horizon muestra a varios animales (dinosaurios, ballenas, elefantes) corriendo junto al Titán Bestia, todos con un corazón rojo brillante en el pecho. Esto no era una locura aleatoria: era una pista sutil de que el poder de los titanes ha existido a lo largo de la historia de la vida y que el Titán Bestia toma características del animal favorito (o que mejor representa) de su portador.',
+            'El bajón de ritmo... en la vida real: La primera temporada se emitió en 2013 y la segunda no llegó hasta 2017. Esta espera de 4 años se debió a que el estudio (WIT Studio) quería que el manga de Hajime Isayama avanzara lo suficiente para no tener que inventarse un final o meter relleno, asegurando una adaptación extremadamente fiel.',
+            'La doble personalidad de Reiner: El comportamiento errático de Reiner (actuar como un soldado leal y segundos después como un guerrero infiltrado) no era una actuación para engañar a Eren. Isayama confirmó que Reiner sufría un trastorno de identidad disociativo real debido al trauma y la culpa de haber roto el muro y causado la muerte de miles de inocentes.',
+            'El origen de los Titanes de Ragako: En esta temporada descubrimos que los titanes que aparecieron dentro del Muro Rosa provenían del pueblo de Conny (Ragako) y que no había ninguna brecha en la muralla. La imagen del titán deforme atrapado en la casa de Conny, que le dice "bienvenido a casa", fue la confirmación definitiva de que todos los titanes puros fueron alguna vez seres humanos.'
+        ]
+    },
+    temporada3: {
+        titulo: 'Temporada 3: El Gobierno Oculto',
+        momentos: [
+            '1. El regreso de Kenny el Destripador y Levi en Stohess: La temporada arranca rompiendo el esquema habitual: el enemigo ya no son los titanes, sino otros humanos. La entrada de Kenny el Destripador persiguiendo a Levi por los techos de Stohess nos dio una de las secuencias de acción mejor animadas de la historia del anime (cortesía de WIT Studio). Además, obligó a los chicos del Cuerpo de Exploración a mancharse las manos de sangre humana por primera vez.',
+            '2. La rebelión en la caverna de cristal y la verdad de Grisha: Atrapado en la capilla de los Reiss, Eren descubre la peor de las verdades a través de los recuerdos: su padre, Grisha, asesinó a la familia real para robar el Titán Fundador y, posteriormente, obligó a un Eren niño a transformarse en titán para que lo devorara. La escena de Eren llorando, completamente roto por la culpa y pidiéndole a Historia que se lo coma para salvar a la humanidad, es desgarradora.',
+            '3. Historia Reiss rechaza su destino: Rod Reiss intenta manipular a su hija para que se inyecte el suero de titán y devore a Eren. Sin embargo, Historia recuerda las palabras de Ymir ("vive una vida de la que puedas estar orgullosa") y manda a volar a su padre, rompiendo la jeringuilla contra el suelo en un acto de pura liberación personal. Poco después, tras derrotar al titán gigante de su padre, se corona como la verdadera Reina de las Murallas.',
+            '4. La carga suicida de Erwin Smith: En la batalla de Shiganshina, atrapados por las piedras que lanza el Titán Bestia, la derrota parece inevitable. El Comandante Erwin toma la decisión más difícil de su vida: renunciar a su sueño de ver el sótano y liderar a los reclutas en una carga suicida frontal para servir de distracción. Su discurso sobre cómo los vivos dan significado a las vidas de los caídos es, sin duda, el momento más épico e inspirador de toda la serie.',
+            '5. Levi vs. el Titán Bestia: Aprovechando la distracción de Erwin, Levi flanquea al Titán Bestia usando a los titanes puros como postes. Lo que sigue es una carnicería absoluta: Levi desmantela por completo al Titán Bestia en cuestión de segundos, sacando a Zeke de la nuca en un despliegue de rabia y habilidad insuperable.',
+            '6. El "Serum Bowl" (La decisión de Levi): Con Armin completamente carbonizado tras derrotar al Titán Colosal y Erwin a las puertas de la muerte, surge el dilema moral definitivo: ¿A quién inyectar el único suero de titán disponible? Eren y Mikasa pelean desesperadamente por Armin; el resto por Erwin. Finalmente, Levi decide dejar descansar a Erwin de su "infierno" y elige a Armin, quien devora a Bertholdt y se convierte en el nuevo Titán Colosal.',
+            '7. El sótano y la verdad del mundo: El misterio que guio la serie durante tres temporadas se resuelve. Al abrir la puerta del sótano de los Jaeger, encuentran tres libros y una fotografía (tecnología inexistente dentro de los muros). La verdad cae como un balde de agua fría: la humanidad no se ha extinguido. Los habitantes de los muros pertenecen a una raza llamada Eldia, y están atrapados en una isla (Paradis) convertida en un campo de concentración flotante por una nación enemiga mucho más avanzada: Marley.'
+        ],
+        curiosidades: [
+            'Inspiraciones en Breaking Bad: Hajime Isayama es un fan absoluto de las series occidentales. Confesó que para el diseño visual de algunos personajes secundarios de la Policía Militar (como el rey falso o Flegel Reiss) se inspiró en personajes de Breaking Bad y Better Call Saul, específicamente en el estilo de tipos duros y corruptos.',
+            'El origen de Levi Ackerman: En esta temporada descubrimos que Levi es un Ackerman y que Kenny era su tío. Isayama reveló que diseñó la personalidad fría, obsesiva con la limpieza y letal de Levi basándose en el personaje de Rorschach de la famosa novela gráfica Watchmen.',
+            'El cambio radical del Opening: Tras los openings hiperactivos y militares de las temporadas anteriores, la Parte 1 de la tercera temporada sorprendió con Red Swan (de Yoshiki con Hyde). Fue un tema melancólico y suave centrado en la infancia de Eren, Mikasa, Armin y Levi. Esto dividió a los fans al principio, pero reflejaba perfectamente que esta era una temporada de maduración y pérdida de la inocencia, no de batallas motivacionales contra monstruos.',
+            'La Maldición de Ymir: En los recuerdos de Grisha se revela una regla crucial para el lore: cualquier persona que herede uno de los 9 Titanes Cambiantes morirá exactamente 13 años después de adquirirlo, debido a que nadie puede superar la esperanza de vida de la Ymir original. Esto le puso una fecha de caducidad dramática a Eren y Armin.',
+            'El glitch terrorífico del Ending: Durante la emisión de la Parte 1, el ending del episodio 12 (Akatsuki no Chinkonka) sufrió un "glitch" digital repentino en mitad de los créditos, mostrando imágenes distorsionadas y caóticas de la futura masacre de la Parte 2 (incluyendo a Eren y Mikasa ensangrentados). No fue un error de la televisión, fue una genialidad de marketing para generar pánico y expectación entre los espectadores antes del parón de la temporada.'
+        ]
+    },
+    temporada4: {
+        titulo: 'Temporada 4: La Guerra Final',
+        momentos: [
+            '1. El asalto a Liberio (Eren emerge del suelo): Tras pasar los primeros episodios viendo la vida de los guerreros de Marley, Willy Tybur da un discurso ante los líderes del mundo declarándole la guerra a Paradis. En ese preciso instante, Eren (infiltrado en Marley) se transforma en titán justo debajo del escenario, devorando a Willy y desatando una masacre de civiles. La llegada del Cuerpo de Exploración con sus nuevos trajes negros para rescatarlo nos dejó claro que Paradis ya no jugaba a la defensiva.',
+            '2. La muerte de Sasha Blouse: Tras la victoria en Liberio, una joven soldado de Marley llena de rabia, Gabi Braun, logra subir al dirigible de escape de Paradis y dispara a bocajarro. Sasha muere rodeada de sus amigos, y sus últimas palabras son, trágicamente, "carne". Este momento rompió el corazón de los fans y marcó el punto de no retorno para la madurez del grupo.',
+            '3. La paliza de Eren a Armin y el "te odio" a Mikasa: En una de las escenas más dolorosas de la serie, Eren se reúne con Armin y Mikasa solo para destrozarlos psicológicamente. Le dice a Mikasa que los Ackerman son solo esclavos programados genéticamente y que siempre la ha odiado, para luego permitir que los Jaegeristas le den una paliza brutal a Armin. Eren corta todos sus lazos afectivos para avanzar en su plan en solitario.',
+            '4. La traición de Zeke y el Retumbar de la Tierra: Zeke Jaeger creía que Eren apoyaba su plan de "eutanasia eldia" (esterilizar a su propia raza para que se extinguiera en paz). Sin embargo, al encontrarse en los Caminos con la fundadora Ymir, Eren revela sus verdaderas intenciones. Tras un viaje por los recuerdos de su padre, Eren convence a Ymir de que le preste su poder, despierta a los millones de titanes colosales que formaban los muros de Paradis y activa el Retumbar con el objetivo de erradicar toda la vida fuera de la isla.',
+            '5. La alianza imposible y el sacrificio de Hange: Para detener a Eren, los supervivientes del Cuerpo de Exploración (Mikasa, Armin, Levi, Jean, Connie) se ven obligados a aliarse con sus antiguos enemigos de Marley (Reiner, Annie, Pieck). Durante la huida en hidroavión, los titanes del Retumbar los alcanzan. Hange Zoë se nombra a sí misma el último escudo, cede el puesto de Comandante a Armin y se sacrifica en una batalla épica y ardiente para darles tiempo de despegar.',
+            '6. El clímax final: Mikasa libera a la humanidad: En la batalla final sobre el titán esquelético de Eren, Armin se transforma en el Colosal para luchar contra él cara a cara. Mientras tanto, Mikasa logra entrar en la boca del titán de Eren gracias a la ayuda de Levi. En una secuencia poética y devastadora, Mikasa decapita a Eren y le da un beso de despedida. Este acto de amor y sacrificio libera a la fundadora Ymir de su obsesión milenaria, haciendo que el poder de los titanes desaparezca de la Tierra para siempre.'
+        ],
+        curiosidades: [
+            'El cambio de estudio de animación: Tras tres temporadas brillantes, WIT Studio dejó el proyecto debido a los calendarios de entrega inhumanos exigidos por el comité de producción. MAPPA asumió el enorme reto de animar la temporada final. Cambiaron el estilo artístico para asemejarlo mucho más al dibujo oscuro y rudo del manga original de Hajime Isayama, y recurrieron al CGI para poder animar la ingente cantidad de titanes del Retumbar.',
+            'La inspiración detrás de Gabi: Gabi Braun es uno de los personajes más odiados por el fandom tras matar a Sasha. Curiosamente, Isayama reveló que diseñó el físico y la personalidad competitiva de Gabi basándose en un boceto descartado que tenía de cómo habría sido Eren Jaeger si hubiera nacido siendo mujer. Al final, Gabi es un espejo exacto del Eren de la primera temporada: alguien cegado por el odio y el adoctrinamiento.',
+            'El misterio del primer episodio de la serie: El final definitivo conecta directamente con el episodio 1 de la primera temporada (titulado "A ti, dentro de 2000 años"). Al principio de la serie, Eren se despierta llorando tras una pesadilla bajo un árbol. En el final, descubrimos que ese llanto se debía a que estaba recibiendo, a través de los Caminos, las memorias de todo el trágico viaje que acabaría viviendo y su propio final a manos de Mikasa.',
+            'The Rumbling y el éxito mundial: El opening de la Parte 2, The Rumbling de la banda de metal alternativo SiM, se convirtió en un fenómeno global absoluto. Fue la primera vez que un tema de la serie utilizaba screams y metal pesado puro, reflejando a la perfección la brutalidad apocalíptica del Retumbar. Llegó a encabezar las listas de Billboard de hard rock en Estados Unidos.',
+            'El árbol del epílogo: En las escenas post-créditos finales, vemos cómo pasa el tiempo, las civilizaciones caen, la guerra vuelve a estallar siglos después y el árbol donde Eren fue enterrado crece hasta volverse gigantesco. Visualmente, es idéntico al árbol donde la fundadora Ymir cayó originalmente y obtuvo el poder de los titanes, sugiriendo un ciclo eterno donde la naturaleza humana y el poder misterioso de la vida siempre encuentran la forma de repetirse.'
+        ]
+    }
+};
+
+function openHistoriaDetalle(clave) {
+    const detalle = historiaDetalles[clave];
+    if (!detalle) return;
+
+    document.getElementById('historia-main').style.display = 'none';
+    const detalleContenedor = document.getElementById('historia-detalle');
+    document.getElementById('detalle-titulo').textContent = detalle.titulo;
+    document.getElementById('detalle-descripcion').textContent = detalle.descripcion;
+    const momentosLista = document.getElementById('detalle-momentos');
+    const curiosidadesLista = document.getElementById('detalle-curiosidades');
+
+    momentosLista.innerHTML = detalle.momentos.map(item => `<li>${item}</li>`).join('');
+    curiosidadesLista.innerHTML = detalle.curiosidades.map(item => `<li>${item}</li>`).join('');
+
+    detalleContenedor.style.display = 'block';
+    window.scrollTo({ top: detalleContenedor.offsetTop - 70, behavior: 'smooth' });
+}
+
+function volverAHistoria() {
+    document.getElementById('historia-detalle').style.display = 'none';
+    document.getElementById('historia-main').style.display = 'block';
+    window.scrollTo({ top: document.getElementById('historia').offsetTop - 70, behavior: 'smooth' });
 }
 
 // Función para realizar la petición AJAX y cargar el archivo XML

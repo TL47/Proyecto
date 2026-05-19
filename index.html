@@ -297,23 +297,24 @@
         <hr class="linea-sangre">
         <h2 class="text-center txt-sangre mb-5">Historia de Attack on Titan</h2>
 
-        <!-- Temporada 1 -->
-        <div class="card mb-4 shadow-sm carta-titan">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="imagenes/temporada1.jpg" class="img-fluid rounded-start h-100 object-fit-cover" alt="Temporada 1" style="max-height: 250px; object-fit: cover;">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h3 class="card-title txt-sangre">Temporada 1: La Caída de Shiganshina</h3>
-                        <p class="card-text">La humanidad vive protegida por tres enormes murallas de los titanes, criaturas gigantes que devoran personas. La paz se rompe cuando un titán colosal y acorazado rompen la Muralla María, forzando a Eren Jaeger, Mikasa Ackerman y Armin Arlert a unirse a la Legión de Reconocimiento para luchar por su supervivencia y descubrir los secretos detrás de los titanes y las murallas.</p>
-                        <button class="btn btn-legion mt-3">Ver más</button>
+        <div id="historia-main">
+            <!-- Temporada 1 -->
+            <div class="card mb-4 shadow-sm carta-titan">
+                <div class="row g-0">
+                    <div class="col-md-4 card-img-left">
+                        <img src="imagenes/temporada1.jpg" class="img-fluid rounded-start h-100 object-fit-cover" alt="Temporada 1" style="max-height: 250px; object-fit: cover;">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h3 class="card-title txt-sangre">Temporada 1: La Caída de Shiganshina</h3>
+                            <p class="card-text">La humanidad vive protegida por tres enormes murallas de los titanes, criaturas gigantes que devoran personas. La paz se rompe cuando un titán colosal y acorazado rompen la Muralla María, forzando a Eren Jaeger, Mikasa Ackerman y Armin Arlert a unirse a la Legión de Reconocimiento para luchar por su supervivencia y descubrir los secretos detrás de los titanes y las murallas.</p>
+                            <button class="btn btn-legion mt-3" onclick="openHistoriaDetalle('temporada1')">Ver más</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Temporada 2 -->
+            <!-- Temporada 2 -->
         <div class="card mb-4 shadow-sm carta-titan">
             <div class="row g-0">
                 <div class="col-md-4">
@@ -323,7 +324,7 @@
                     <div class="card-body">
                         <h3 class="card-title txt-sangre">Temporada 2: El Reino de los Titanes</h3>
                         <p class="card-text">Tras la batalla en el Distrito de Stohess, la Legión de Reconocimiento se enfrenta a nuevas amenazas y revelaciones impactantes. Los titanes aparecen dentro de la Muralla Rose, y se descubren verdades sobre la identidad de algunos compañeros y el origen de los titanes. La lucha por la supervivencia se intensifica mientras buscan respuestas dentro de las murallas.</p>
-                        <button class="btn btn-legion mt-3">Ver más</button>
+                        <button class="btn btn-legion mt-3" onclick="openHistoriaDetalle('temporada2')">Ver más</button>
                     </div>
                 </div>
             </div>
@@ -339,7 +340,7 @@
                     <div class="card-body">
                         <h3 class="card-title txt-sangre">Temporada 3: El Gobierno Oculto</h3>
                         <p class="card-text">La verdad sobre el mundo exterior comienza a revelarse mientras la Legión de Reconocimiento se enfrenta al gobierno real y a los misteriosos Guerreros de Marley. Se descubre la historia olvidada de la humanidad y el verdadero propósito de las murallas. La lucha se vuelve más compleja cuando los enemigos resultan ser más cercanos de lo imaginado.</p>
-                        <button class="btn btn-legion mt-3">Ver más</button>
+                        <button class="btn btn-legion mt-3" onclick="openHistoriaDetalle('temporada3')">Ver más</button>
                     </div>
                 </div>
             </div>
@@ -355,9 +356,22 @@
                     <div class="card-body">
                         <h3 class="card-title txt-sangre">Temporada 4: La Guerra Final</h3>
                         <p class="card-text">La historia llega a su conclusión con una guerra a escala mundial entre Paradis y Marley. Eren y sus amigos deben tomar decisiones imposibles que determinarán el futuro de la humanidad. Las verdades finales sobre los titanes, el poder del Fundador y el ciclo de odio se revelan en una épica batalla final que cambiará el mundo para siempre.</p>
-                        <button class="btn btn-legion mt-3">Ver más</button>
+                        <button class="btn btn-legion mt-3" onclick="openHistoriaDetalle('temporada4')">Ver más</button>
                     </div>
                 </div>
+            </div>
+        </div>
+        </div>
+
+        <div id="historia-detalle" class="card mb-4 shadow-sm carta-titan" style="display: none;">
+            <div class="card-body detalle-historia">
+                <h3 id="detalle-titulo" class="card-title txt-sangre"></h3>
+                <p id="detalle-descripcion" class="mb-3"></p>
+                <h5 class="txt-sangre">Momentos importantes</h5>
+                <ul id="detalle-momentos" class="mb-3"></ul>
+                <h5 class="txt-sangre">Curiosidades</h5>
+                <ul id="detalle-curiosidades" class="mb-4"></ul>
+                <button class="btn btn-legion" onclick="volverAHistoria()"><i class="fas fa-arrow-left me-2"></i>Volver atrás</button>
             </div>
         </div>
     </div>
