@@ -236,6 +236,27 @@ footer p {
     font-size: 0.95rem;
 }
 
+#faction-icon {
+    display: none;
+}
+
+#faction-icon .faction-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.12);
+}
+
+#faction-icon span {
+    color: var(--paper-white);
+    font-size: 0.95rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
 .fondo-verde {
     background-color: var(--army-green) !important;
 }

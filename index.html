@@ -25,7 +25,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <div class="navbar-nav ms-auto">
+                <div class="navbar-nav ms-auto align-items-center">
                     <a class="nav-link active" href="#" onclick="showSection('inicio')"><i
                             class="fas fa-home me-1"></i>Inicio</a>
                     <a class="nav-link" href="#" onclick="showSection('titanes')"><i
@@ -36,6 +36,10 @@
                             class="fas fa-chess-rook me-1"></i>Murallas</a>
                     <a class="nav-link" href="#" onclick="showSection('historia')"><i
                             class="fas fa-book me-1"></i>Historia</a>
+                </div>
+                <div id="faction-icon" class="d-flex align-items-center ms-3" style="display: none;">
+                    <img id="faction-icon-img" alt="Facción seleccionada" class="faction-logo me-2" style="display: none;">
+                    <span id="faction-icon-text"></span>
                 </div>
             </div>
         </div>
@@ -219,7 +223,7 @@
         </div>
 
         <div class="button-container d-flex justify-content-center flex-wrap mb-5">
-            <button class="btn btn-legion m-2" onclick="iniciarTestFacciones()">Hacer Test de Facción</button>
+            <button id="btn-iniciar-test" class="btn btn-legion m-2" onclick="iniciarTestFacciones()">Hacer Test de Facción</button>
         </div>
 
         <div id="resultado-test" class="text-center" style="display: none;">

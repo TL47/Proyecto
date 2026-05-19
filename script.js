@@ -245,8 +245,23 @@ function createCardTemplate(titulo, contenido) {
     `;
 }
 
+let faccionSeleccionada = null;
+
 // Función para elegir una facción directamente sin hacer el test
-function elegirFaccionDirecto(faccion) {
+function actualizarIconoFaccion(faccion, nombre, icono) {
+    const factionIcon = document.getElementById('faction-icon');
+    const factionIconImg = document.getElementById('faction-icon-img');
+    const factionIconText = document.getElementById('faction-icon-text');
+    if (factionIcon && factionIconImg && factionIconText) {
+        factionIconImg.src = icono;
+        factionIconImg.alt = `Logo ${nombre}`;
+        factionIconImg.style.display = 'block';
+        factionIconText.textContent = nombre;
+        factionIcon.style.display = 'flex';
+    }
+}
+
+function elegirFaccionDirecto(faccion, confirmarSeleccion = true) {
     // Objeto con los datos de las tres facciones disponibles
     const facciones = {
         'exploracion': {
@@ -272,6 +287,30 @@ function elegirFaccionDirecto(faccion) {
     // Obtiene la facción seleccionada o usa exploración como valor por defecto
     const faccionElegida = facciones[faccion] || facciones['exploracion'];
 
+    if (confirmarSeleccion) {
+        const confirmacion = confirm(`¿Estás seguro de elegir la facción ${faccionElegida.nombre}? No podrás cambiar de opción después.`);
+        if (!confirmacion) {
+            return;
+        }
+    }
+
+    faccionSeleccionada = faccion;
+    const testButton = document.getElementById('btn-iniciar-test');
+    if (testButton) {
+        testButton.disabled = true;
+        testButton.classList.add('disabled');
+        testButton.textContent = 'Test bloqueado tras elegir facción';
+    }
+
+    const botonesElegir = document.querySelectorAll("button[onclick^='elegirFaccionDirecto']");
+    botonesElegir.forEach(boton => {
+        boton.disabled = true;
+        boton.classList.add('disabled');
+    });
+
+    // Actualiza el icono de la facción en la barra superior
+    actualizarIconoFaccion(faccion, faccionElegida.nombre, faccionElegida.escudo);
+
     // Actualiza los elementos del DOM con los datos de la facción elegida
     document.getElementById('escudo-resultado').src = faccionElegida.escudo;
     document.getElementById('titulo-faccion').textContent = faccionElegida.nombre;
@@ -288,6 +327,10 @@ let responderTestGlobal;
 
 // Función para iniciar el test de facciones y determinar cuál es la más adecuada para el usuario
 function iniciarTestFacciones() {
+    if (faccionSeleccionada) {
+        alert('Ya has elegido una facción directamente, no puedes hacer el test.');
+        return;
+    }
     // Obtiene los elementos del DOM que se van a manipular
     const testContainer = document.getElementById("test-container");
     const preguntaTest = document.getElementById("texto-pregunta");
@@ -566,7 +609,7 @@ function iniciarTestFacciones() {
             }
 
             // Llama a la función para mostrar el resultado con la facción determinada
-            elegirFaccionDirecto(faccionGanadora);
+            elegirFaccionDirecto(faccionGanadora, false);
         }
     }
 
