@@ -6,6 +6,12 @@ function showSection(sectionId) {
         section.style.display = 'none';
     });
 
+    // Oculta también el panel de detalle de murallas si estaba abierto
+    const infoMuralla = document.getElementById('info-muralla');
+    if (infoMuralla) {
+        infoMuralla.style.display = 'none';
+    }
+
     // Busca la sección específica por su ID y la hace visible
     const selectedSection = document.getElementById(sectionId);
     if (selectedSection) {

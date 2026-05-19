@@ -225,9 +225,15 @@ body {
 footer {
     background-color: var(--dark-grey);
     color: var(--tan-accent);
-    border-top: 3px solid var(--blood-red);
+    border-top: 1px solid var(--blood-red);
     margin-top: auto;
     width: 100%;
+    padding: 0.75rem 0 !important;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.95rem;
 }
 
 .fondo-verde {
@@ -347,6 +353,47 @@ html {
     margin-top: 0.5rem;
 }
 
+#info-muralla {
+    min-height: calc(100vh - 180px);
+    padding: 3rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#info-muralla .card {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    height: auto !important;
+}
+
+#info-muralla .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+}
+
+#info-muralla img {
+    max-width: 180px;
+    margin: 0 auto;
+}
+
+#info-muralla p {
+    max-width: 94%;
+    margin: 0 auto;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.p-4 {
+    padding-top: 20px;
+}
+
 @media (max-width: 768px) {
     .portada {
         border-left: 5px solid var(--blood-red);
@@ -355,5 +402,10 @@ html {
     .btn-legion {
         padding: 10px 20px;
         font-size: 0.9rem;
+    }
+
+    #info-muralla {
+        min-height: auto;
+        padding: 2rem 1rem;
     }
 }
