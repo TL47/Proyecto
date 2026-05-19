@@ -126,6 +126,24 @@ body {
     border-color: var(--blood-red);
 }
 
+.carta-titan {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.carta-titan .card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.carta-titan .btn-legion, 
+.carta-titan button,
+.carta-titan .card-footer-custom {
+    margin-top: auto; 
+}
+
 .carta-pj, .carta-titan {
     background-color: var(--paper-white);
     border: 2px solid var(--tan-accent);
